@@ -8,7 +8,7 @@ This project provides algorithms to calculate ReLU Hull, which is a convex hull 
 
 Here we give a fast, pricise and scalable algorithm, **selective constraints identification** (SCI) and its enhanced version, SCIPLUS. This algorithm get a ReLU hull approximation by selectively identify faces (facets) of the exact convex hull. Our method has more advantages compared to the exact or approximate methods in ERAN (e.g. SBLM+PDDM).
 
-Two types of experiments are given. One is for compare the approximation precision (volumes of resulting convex hull/approximation), efficiency (run time) and scalability (acceptable dimension); another is for verifying local robustness of a neural network with $l_{\infin}$ norm bound.
+Two types of experiments are given. One is for compare the approximation precision (volumes of resulting convex hull/approximation), efficiency (run time) and scalability (acceptable dimension); another is for verifying local robustness of a neural network with $l_{\infty}$ norm bound.
 
 ## Requirements
 
@@ -41,7 +41,7 @@ We provide a parser different from that of ERAN, and it has the following main a
 - `--net_file`: The network file name/path (.onnx)
 - `--dataset`: The dataset (mnist, cifar10)
 - `--domain`: The domain name (deeppoly, refinepoly, gpupoly, gpurefinepoly)
-- `--epsilon`: The Epsilon for $l_\infin$ perturbation
+- `--epsilon`: The Epsilon for $l_\infty$ perturbation
 - `--samples_num`: The number of samples to test
 - `--samples_start`: The first id of samples to test
 - `--ns`: The number of variables to group by k-activation
