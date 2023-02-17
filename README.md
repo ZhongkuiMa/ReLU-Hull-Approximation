@@ -8,11 +8,11 @@ This project provides algorithms to calculate ReLU Hull, which is a convex hull 
 
 Here we give a fast, pricise and scalable algorithm, **selective constraints identification** (SCI) and its enhanced version, SCIPLUS. This algorithm get a ReLU hull approximation by selectively identify faces (facets) of the exact convex hull. Our method has more advantages compared to the exact or approximate methods in ERAN (e.g. SBLM+PDDM).
 
-Two types of experiments are given. One is for compare the approximation precision (volumes of resulting convex hull/approximation), efficiency (run time) and scalability (acceptable dimension); another is for verifying local robustness of a neural network with $l_{\infty}$ norm bound.
+Two types of experiments are given. One is for comparing the approximation precision (volumes of resulting convex hull/approximation), efficiency (run time) and scalability (acceptable dimension); another is for verifying local robustness of a neural network with $l_{\infty}$ norm bound.
 
 ## Requirements
 
-Same as [ERAN](https://github.com/eth-sri/eran) project. Therefore, you need to install ERAN first and copy our folders in ERAN folder. We put ERAN and ELINA in the same directory, which is different from the default configuration of ERAN. You need to manually adjust a few of our code, or choose to adjust the configuration location of ELINA.
+Same as [ERAN](https://github.com/eth-sri/eran) project. Therefore, you need to install ERAN firstly and copy our folders in ERAN folder. We put ERAN and ELINA in the same directory, which is different from the default configuration of ERAN. You need to manually adjust a few of our code, or choose to adjust the configuration location of ELINA.
 
 All neural network files are from ERAN project and only `.onnx` files are supported. Only MNIST and CIFAR10 are supported datasets.
 
@@ -43,7 +43,7 @@ We provide a parser different from that of ERAN, and it has the following main a
 - `--domain`: The domain name (deeppoly, refinepoly, gpupoly, gpurefinepoly)
 - `--epsilon`: The Epsilon for $l_\infty$ perturbation
 - `--samples_num`: The number of samples to test
-- `--samples_start`: The first id of samples to test
+- `--samples_start`: The first index of samples to test
 - `--ns`: The number of variables to group by k-activation
 - `--k`: The group size of k-activation
 - `--s`: The overlap size between two k-activation group
