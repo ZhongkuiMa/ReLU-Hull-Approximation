@@ -39,14 +39,14 @@ python3 experiment.py --net_file ../nets/onnx/mnist/mnist_relu_3_50.onnx --datas
 We provide a parser different from that of ERAN, and it has the following main arguments:
 
 - `--net_file`: The network file name/path (.onnx)
-- `--dataset`: The dataset (mnist, cifar10)
-- `--domain`: The domain name (deeppoly, refinepoly, gpupoly, gpurefinepoly)
+- `--dataset`: The dataset (mnist or cifar10)
+- `--domain`: The domain name (deeppoly, refinepoly, gpupoly or gpurefinepoly)
 - `--epsilon`: The Epsilon for $l_\infty$ perturbation
 - `--samples_num`: The number of samples to test
 - `--samples_start`: The first index of samples to test
 - `--ns`: The number of variables to group by k-activation
-- `--k`: The group size of k-activation
-- `--s`: The overlap size between two k-activation group
+- `--k`: The group size of a k-activation
+- `--s`: The overlap size between two k-activation groups
 - `--convex_method`: The method to calculate k-activation
 
 ## Contributors
