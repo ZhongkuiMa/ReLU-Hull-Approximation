@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project provides algorithms to calculate ReLU Hull, which is a convex hull or approximation of a polytope after ReLU transformation. These algorithms are used to neural network verification and can be embedded in current state-of-art tool PRIMA<sup>[1]<\sup> in [ERAN](https://github.com/eth-sri/eran) project.
+This project provides algorithms to calculate ReLU Hull, which is a convex hull or approximation of a polytope after ReLU transformation. These algorithms are used to neural network verification and can be embedded in current state-of-art tool PRIMA<sup>[1]</sup> in [ERAN](https://github.com/eth-sri/eran) project.
 
 ### Our Algorithm: Selective Constraints Identification (SCI)
 
@@ -47,7 +47,7 @@ You may need to change the specific codes to run the desired experiment.
 
 ### Verify Neural Network
 
-Change the directory to `experiment_gpu` (using GPUPoly or GPURefinePoly<sup>[4]<\sup>) or`experiment_cpu` (using DeepPoly or RefinePoly<sup>[2]<\sup>) and input a command like
+Change the directory to `experiment_gpu` (using GPUPoly or GPURefinePoly<sup>[4]</sup>) or`experiment_cpu` (using DeepPoly or RefinePoly<sup>[2]</sup>) and input a command like
 
 ```bash
 python3 experiment.py --net_file ../nets/onnx/mnist/mnist_relu_3_50.onnx --dataset mnist --domain refinegpupoly --ns 20 --k 3 --s 1 --convex_method sci
@@ -64,7 +64,7 @@ We provide a parser different from that of ERAN, and it has the following main a
 - `--ns`: The number of variables to group by k-relu
 - `--k`: The group size of a k-relu
 - `--s`: The overlap size between two k-relu groups
-- `--convex_method`: The method to calculate k-relu, there are four options, cdd (exact method)<sup>[2]<\sup>, fast (approximate method, SBLM+PDDM, in PRIMA<sup>[1]<\sup>), sci (our basic method) and sciplus (our enhanced method)
+- `--convex_method`: The method to calculate k-relu, there are four options, cdd (exact method)<sup>[2]</sup>, fast (approximate method, SBLM+PDDM, in PRIMA<sup>[1]</sup>), sci (our basic method) and sciplus (our enhanced method)
 
 ## Related Research
 
