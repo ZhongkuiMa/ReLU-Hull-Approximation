@@ -1,8 +1,7 @@
+import itertools
 import os
 import sys
 from random import sample
-
-from relu_hull.krelu_methods import krelu_with_cdd, fkrelu, krelu_with_sciplus
 
 sys.path.insert(0, '../')
 sys.path.insert(0, '../../')
@@ -11,12 +10,14 @@ import time
 from datetime import datetime
 from typing import Callable
 import numpy as np
-from relu_hull.krelu_methods_time import krelu_with_sci, krelu_with_triangle
+from relu_hull.krelu_methods import krelu_with_cdd, fkrelu, krelu_with_sciplus, krelu_with_sci, krelu_with_triangle
 from relu_hull.constraints import generate_box_constraints, generate_random_constraints, get_bounds_of_variables, \
     get_octahedral_approximation
 from volume import estimate_polytope_volume, generate_random_points_in_box, estimate_polytope_volume2
 
+# Caculate sample points by group for efficient
 REPEAT_SAMPLING_NUM = 10000
+
 
 def _run_experiment(dimension: int, lower_bound: int, upper_bound: int,
                     total_added_constraints_num: int, added_constraints_num: int,
@@ -156,10 +157,8 @@ def run_experiment(methods: [Callable], dimension: int, points_num: int, groups_
                     groups_num, methods, points_num, sample_method, step_length=step_length)
 
 
-import itertools
-
 if __name__ == '__main__':
-    group_num = 5
+    test_num = 1
     dimensions = [10]
     lower_bound, upper_bound = -10, 10
     random_points_num = {2: 100, 3: 10000, 4: 10000, 5: 10000, 6: 100000}
@@ -180,8 +179,10 @@ if __name__ == '__main__':
     #            9: [krelu_with_mlf],
     #            10: [krelu_with_mlf]}
 
+    ## Calculate volume with random points.
+
     sample_method = "random"
-    for dimension, _ in itertools.product(dimensions, range(group_num)):
+    for dimension, _ in itertools.product(dimensions, range(test_num)):
         run_experiment(methods[dimension], dimension, random_points_num[dimension], 1, lower_bound, upper_bound,
                        2 ** dimension, sample_method)
     # for dimension, _ in itertools.product(dimensions, range(group_num)):
@@ -193,6 +194,8 @@ if __name__ == '__main__':
     # for dimension in dimensions:
     #     run_experiment(methods[dimension], dimension, random_points_num[dimension], group_num, lower_bound, upper_bound,
     #                    5 ** dimension, sample_method)
+
+    ## Calculate volume with uniform points.
 
     # step_length = 0.2
     # sample_method = "uniform"
