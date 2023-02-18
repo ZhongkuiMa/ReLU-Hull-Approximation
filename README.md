@@ -12,9 +12,14 @@ Two types of experiments are given. One is for comparing the approximation preci
 
 ## Requirements
 
-Same as [ERAN](https://github.com/eth-sri/eran) project. Therefore, you need to install ERAN firstly and copy our folders in ERAN folder. We put ERAN and ELINA in the same directory, which is different from the default configuration of ERAN. You need to manually adjust a few of our code, or choose to adjust the configuration location of ELINA.
+Same as [ERAN](https://github.com/eth-sri/eran) project. 
 
 All neural network files are from ERAN project and only `.onnx` files are supported. Only MNIST and CIFAR10 are supported datasets.
+
+## Installation
+
+1. Install [ERAN](https://github.com/eth-sri/eran). We put ERAN and ELINA in a same directory, which is different from the default configuration of ERAN. You need to manually adjust a few of our code, or choose to adjust the configuration location of ELINA.
+2. Copy all our files to the ERAN folder.
 
 ## Usage
 
@@ -44,10 +49,10 @@ We provide a parser different from that of ERAN, and it has the following main a
 - `--epsilon`: The Epsilon for $l_\infty$ perturbation
 - `--samples_num`: The number of samples to test
 - `--samples_start`: The first index of samples to test
-- `--ns`: The number of variables to group by k-activation
-- `--k`: The group size of a k-activation
-- `--s`: The overlap size between two k-activation groups
-- `--convex_method`: The method to calculate k-activation
+- `--ns`: The number of variables to group by k-relu
+- `--k`: The group size of a k-relu
+- `--s`: The overlap size between two k-relu groups
+- `--convex_method`: The method to calculate k-relu
 
 ## Contributors
 
