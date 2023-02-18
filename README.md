@@ -16,6 +16,18 @@ Same as [ERAN](https://github.com/eth-sri/eran) project.
 
 All neural network files are from ERAN project and only `.onnx` files are supported. Only MNIST and CIFAR10 are supported datasets.
 
+## Code Description
+
+Folder `experiment_cpu` contains code operating on a CPU for neural network verification.
+
+Folder `experiment_cpu` contains code operating on a GPU for neural network verification.
+
+Folder `experiment_volume` contains code for comparing different ReLU Hull approximation algorithms.
+
+Folder `relu_hull` contains code for our algorithm.
+
+Folder `tf_verify_sci` is similar to `tf_verify` with necessary adjustment for our algorithm.
+
 ## Installation
 
 1. Install [ERAN](https://github.com/eth-sri/eran). We put ERAN and ELINA in a same directory, which is different from the default configuration of ERAN. You need to manually adjust a few of our code, or choose to adjust the configuration location of ELINA.
