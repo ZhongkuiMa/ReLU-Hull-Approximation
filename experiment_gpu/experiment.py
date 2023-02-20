@@ -11,7 +11,7 @@ sys.path.insert(0, '../../ELINA/python_interface/')
 import time
 from datetime import datetime
 import numpy as np
-from tf_verify_sci.config import config
+from config import config
 from tf_verify_sci.read_net_file import read_onnx_net
 from tf_verify_sci.analyzer import layers
 from tf_verify_sci.onnx_translator import ONNXTranslator
@@ -24,9 +24,6 @@ from experiment_cpu.samples_verified_by_dp import VERIFIED_SAMPLES_BY_DEEPPOLY
 from experiment_cpu.utils import normalize
 
 IGNORE_SAMPLES_VERIFIED_BY_DEEPPOLY = False
-
-
-
 
 def initialise_gpupoly_model(net_file_path):
     model, is_conv = read_onnx_net(net_file_path)
@@ -45,7 +42,9 @@ def run_experiment():
     domain = config.domain = args.domain
     dataset = config.dataset = args.dataset
     net_file_path = config.netname = args.net_file
-
+    config.from_test = args.samples_start
+    config.num_tests = args.samples_num
+    print(config.from_test, config.num_tests)
     krelu_method = config.approx_k = args.convex_method
     epsilon = config.epsilon = args.epsilon
     ns = config.sparse_n = args.ns
@@ -64,9 +63,12 @@ def run_experiment():
     total_time = 0
     verified_by_deeppoly = 0
 
-    ignored_samples = INCORRECTLY_CLASSIFIED[net_name]
-    if domain == "refinegpupoly":
-        ignored_samples = ignored_samples + VERIFIED_SAMPLES_BY_DEEPPOLY[net_name]
+    ignored_samples = []
+    if IGNORE_SAMPLES_VERIFIED_BY_DEEPPOLY:
+        ignored_samples = INCORRECTLY_CLASSIFIED[net_name]
+        if domain == "refinegpupoly":
+            ignored_samples = ignored_samples + VERIFIED_SAMPLES_BY_DEEPPOLY[net_name]
+
 
     samples_ic = []
     samples_dp = []
@@ -188,3 +190,6 @@ def run_experiment():
                 or (domain == "refinegpupoly" and correctly_classified_num + len(
             VERIFIED_SAMPLES_BY_DEEPPOLY[net_name]) >= 100):
             break
+
+if __name__ == '__main__':
+    run_experiment()
