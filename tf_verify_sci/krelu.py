@@ -58,6 +58,7 @@ def generate_linexpr0(offset, varids, coeffs):
 class KAct:
     def __init__(self, input_hrep, lbi, ubi, method):
         assert KAct.type in ["ReLU", "Tanh", "Sigmoid"]
+        assert method != ""
         self.k = len(input_hrep[0]) - 1
         self.input_hrep = np.array(input_hrep)
         if KAct.type == "ReLU":
@@ -71,6 +72,7 @@ class KAct:
                 self.cons = krelu_with_sciplus(self.input_hrep, lbi, ubi)
             else:
                 assert f"{method} is not supported."
+
         elif not method:
             assert False, "not implemented"
         elif KAct.type == "Tanh":
@@ -184,7 +186,6 @@ def sparse_heuristic_curve(length, lb, ub, is_sigm, s=-2):
 def encode_kactivation_cons(nn, man, element, offset, layerno, length, lbi, ubi, constraint_groups, need_pop, domain,
                             activation_type, K=3, s=-2, approx=config.approx_k):
     approx = config.approx_k
-
     import deepzono_nodes as dn
 
     if need_pop:
