@@ -26,7 +26,7 @@ Folder `experiment_volume` contains code for comparing different ReLU Hull appro
 
 Folder `relu_hull` contains code for our algorithm.
 
-Folder `tf_verify_sci` is similar to `tf_verify` with necessary adjustment for our algorithm.
+Folder `tf_verify_sci` is similar to `tf_verify` in ERAN with necessary adjustment for our algorithm.
 
 ## Installation
 
@@ -50,7 +50,7 @@ You may need to change the specific codes to run the desired experiment.
 Change the directory to `experiment_gpu` (using GPUPoly or GPURefinePoly<sup>[4]</sup>) or`experiment_cpu` (using DeepPoly or RefinePoly<sup>[2]</sup>) and input a command like
 
 ```bash
-python3 experiment.py --net_file ../nets/onnx/mnist/mnist_relu_3_50.onnx --dataset mnist --domain refinegpupoly --ns 20 --k 3 --s 1 --convex_method sci
+python3 experiment.py --net_file ../nets/onnx/mnist/mnist_relu_3_50.onnx --dataset mnist --domain refinegpupoly --epsilon 0.1 --ns 20 --k 3 --s 1 --convex_method sci
 ```
 
 We provide a parser different from that of ERAN, and it has the following main arguments:
